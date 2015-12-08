@@ -80,9 +80,17 @@ input[type=button] {
 	padding: 1.5em;
 	line-height: 2;
 	margin: 2em 0;
+	border-radius: 5px;
 }
 
 .recuperado {
 	background: #FE0;
 }
 
+.hovering {
+	background: #ccc;
+}
+
+#mostra-propagandas{
+	display:none;
+}

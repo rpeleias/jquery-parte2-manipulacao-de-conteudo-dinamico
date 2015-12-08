@@ -13,13 +13,66 @@ var atualizaDados = function(){
 		carrinho.find(".quantidade-de-itens").text(items.length);
 	});	
 }
+
 var aposInicializado = function(){			
 	$(".remove-item").click(removeItem);
 	$(".undo").click(undo);
+	$(".carrinho").each(function(){
+		$("tr:nth-child(3n), tr:last").each(function(){
+			umaPropaganda().insertAfter($(this));
+		});	
+	});
+	//$("#esconde-propagandas").click(escondePropagandas);
+	//$("#mostra-propagandas").click(mostraPropagandas);
+	//$("#esconde-propagandas").click(alternaPropaganda);
+	//$("#mostra-propagandas").click(alternaPropaganda);
+	$(".alterna-propaganda").click(alternaPropaganda);
+	//$("tr").hover(daDestaque, tiraDestaque);
+	//$("tr").on("mouseenter", daDestaque);
+	//$("tr").on("mouseleave", tiraDestaque);
+	$(".carrinho tbody tr").hover(daDestaque, tiraDestaque);
 	atualizaDados();
 };
 
-var removeItem = function(event) {				
+var umaPropaganda = function(){
+	var propagandas = ["O que acha de comprar uma motocicleta?",
+               "O que acha de comprar uma lancha?",
+               "O que acha de comprar uma bicicleta?",
+               "O que acha de comprar uma carro?"];
+    var posicao = Math.floor(propagandas.length *Math.random());
+    var texto = propagandas[posicao];
+    var tr =$("<tr>").addClass("propaganda").append($("<td>"));
+    tr.find("td").attr("colsplan", 6).text(texto);
+    return tr;
+}
+
+var escondePropagandas = function(event) {
+	event.preventDefault();
+	$(".propaganda").fadeOut();
+}
+
+var mostraPropagandas = function(event) {
+	event.preventDefault();
+	$(".propaganda").fadeIn();
+}
+
+var daDestaque = function(){
+	$(this).find(".remove-item").fadeIn();
+	$(this).addClass("hovering");
+}
+
+var tiraDestaque = function(){
+	$(this).find(".remove-item").fadeOut();
+	$(this).removeClass("hovering");
+}
+
+var alternaPropaganda = function(event) {
+	event.preventDefault();
+	$(".propaganda").fadeToggle();
+	$(".alterna-propaganda").toggle();
+}
+
+var removeItem =  function(event) {				
 	event.preventDefault();		
 	var self = $(this);	
 	self.closest('tr').hide();			
