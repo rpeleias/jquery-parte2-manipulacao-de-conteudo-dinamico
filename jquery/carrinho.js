@@ -21,15 +21,8 @@ var aposInicializado = function(){
 		$("tr:nth-child(3n), tr:last").each(function(){
 			umaPropaganda().insertAfter($(this));
 		});	
-	});
-	//$("#esconde-propagandas").click(escondePropagandas);
-	//$("#mostra-propagandas").click(mostraPropagandas);
-	//$("#esconde-propagandas").click(alternaPropaganda);
-	//$("#mostra-propagandas").click(alternaPropaganda);
+	});	
 	$(".alterna-propaganda").click(alternaPropaganda);
-	//$("tr").hover(daDestaque, tiraDestaque);
-	//$("tr").on("mouseenter", daDestaque);
-	//$("tr").on("mouseleave", tiraDestaque);
 	$(".carrinho tbody tr").hover(daDestaque, tiraDestaque);
 	atualizaDados();
 };
